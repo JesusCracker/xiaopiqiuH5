@@ -1,0 +1,86 @@
+.container2 {
+  font-family: Georgia, sans-serif;
+  text-align: center;
+  //height: 100%;
+
+  .bg-image {
+    width: 100%;
+  }
+
+  .containInner2 {
+    width: 85%;
+    padding: 10px;
+    left: 4.5%;
+    position: absolute !important;
+    top: 50%;
+  }
+}
+
+.messageBox {
+  .message {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  margin-bottom: 10px;
+}
+
+.agree {
+  margin-top: 10px;
+}
+
+.am-checkbox-inner {
+  width: 15px;
+  height: 15px;
+}
+
+.am-checkbox-agree .am-checkbox-agree-label {
+  font-size: 12px;
+}
+
+.protocol {
+  color: #FB6660;
+}
+
+.am-checkbox-inner:after {
+  position: absolute;
+  display: none;
+  top: 0.5px;
+  right: 4px;
+  z-index: 999;
+  width: 3px;
+  height: 8px;
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+  content: ' ';
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.am-checkbox-agree .am-checkbox-agree-label {
+  margin-left: 20px;
+}
+
+.am-checkbox-agree .am-checkbox-inner {
+  top: 11px;
+}
+
+html:not([data-scale]) .am-card:not(.am-card-full)::before {
+  border: none;
+}
+
+.am-card:not(.am-card-full) {
+  border-radius: 10px;
+}
+
+.am-button-primary {
+  background-image:linear-gradient(90deg, #FB6660 0%, #FB9665 100%);
+  border:none;
+}
+html:not([data-scale]) .am-button-primary::before{
+  border:none;
+}
+.am-checkbox.am-checkbox-checked .am-checkbox-inner{
+  border-color: #FB6660;
+  background: #FB6660;
+}
