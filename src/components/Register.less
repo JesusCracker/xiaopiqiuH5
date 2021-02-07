@@ -2,10 +2,12 @@
   font-family: Georgia, sans-serif;
   text-align: center;
   position: relative;
-  //height: 100%;
-
+  height: 100%;
+  //transform: scale3d(1, 1, 1);
+  //overflow: scroll;
   .bg-image {
     width: 100%;
+    //height: 67%;
   }
 
   .containInner2 {
@@ -13,7 +15,27 @@
     padding: 10px;
     left: 4.5%;
     position: absolute !important;
-    top: 80%;
+    top: 60%;
+    //height: 340px;
+
+  }
+  .downloadBtn{
+    .am-button-primary::before{
+      border: none;
+    }
+    .am-button{
+      border:none;
+      color:#FFFFFF;
+      background: linear-gradient(90deg, #FB6660 0%, #FB9665 100%);
+    }
+/*    position: absolute;
+    width: 100%;
+    bottom: 5%;
+    font-size: 18px;*/
+    width: 100%;
+    position: absolute !important;
+    top: 110%;
+    font-size: 18px
   }
 }
 

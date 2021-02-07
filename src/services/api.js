@@ -8,6 +8,15 @@ export function getVerifyCode(params) {
     }
   });
 }
+//判断用户是否已经注册
+export function isVerified(params) {
+  return request('/api/wx/getUserByPhone', {
+    method: 'POST',
+    body: {
+      ...params
+    }
+  });
+}
 
 //根据code获取用户信息
 export async function queryUserInfo(params) {

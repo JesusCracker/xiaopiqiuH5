@@ -1,4 +1,4 @@
-import {getVerifyCode, queryUserInfo, wxLogin, wxRegister} from '../services/api';
+import {getVerifyCode, queryUserInfo, wxLogin, wxRegister, isVerified} from '../services/api';
 
 export default {
 
@@ -10,6 +10,10 @@ export default {
   effects: {
     * getVerify({payload}, {call}) {
       yield call(getVerifyCode, payload);
+    },
+
+    * isRegistered({payload}, {call}) {
+     return  yield call(isVerified, payload);
     },
 
     * saveUserInfo({payload}, {call, put}) {

@@ -2,6 +2,8 @@
   font-family: Georgia, sans-serif;
   text-align: center;
   height: 100%;
+  position: relative;
+  width: 100%;
 
   .blockArea {
     position: relative;
@@ -81,6 +83,20 @@
     .forget{
       text-align: right;
     }
+  }
+  .downloadBtn{
+    .am-button-primary::before{
+      border: none;
+    }
+    .am-button{
+      border:none;
+      color:#FFFFFF;
+      background: linear-gradient(90deg, #FB6660 0%, #FB9665 100%);
+    }
+    position: absolute;
+    width: 100%;
+    bottom: 5%;
+    font-size: 18px;
   }
 
 }

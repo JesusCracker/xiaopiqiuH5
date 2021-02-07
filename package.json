@@ -14,7 +14,8 @@
     "query-string": "5.0.1",
     "rc-form": "^2.4.12",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "babel-plugin-dva-hmr": "^0.3.2",

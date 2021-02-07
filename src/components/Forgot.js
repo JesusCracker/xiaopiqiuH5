@@ -3,6 +3,8 @@ import {Card, InputItem, Button, Toast, Flex, Checkbox, NavBar, Icon} from 'antd
 import {createForm} from 'rc-form';
 import './Forget.less'
 import {routerRedux} from "dva/router";
+import {Helmet} from 'react-helmet';
+
 import queryString from "query-string";
 
 @createForm()
@@ -107,12 +109,17 @@ class Forgot extends React.Component {
     let errors = null;
 
     return (
+
       <div className={'container'}>
         <NavBar
           mode="light"
           icon={<Icon type="left"/>}
           onLeftClick={() => history.back()}
         >重置密码</NavBar>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>找回密码-小皮球触屏版</title>
+        </Helmet>
 
         <Card className={'containInner222'}>
           <InputItem
@@ -145,7 +152,7 @@ class Forgot extends React.Component {
               />
               <Button
                 type='primary'
-                style={{width: '33vw', height: '38px', lineHeight: '38px', fontSize: '14px', borderRadius: '35px'}}
+                style={{width: '40%', height: '38px', lineHeight: '38px', fontSize: '14px', borderRadius: '35px'}}
                 size='small'
                 onClick={() => this.sendMessage()}
                 loading={loading}
@@ -184,6 +191,10 @@ class Forgot extends React.Component {
         >
           确定
         </Button>
+
+       {/* <div className={'downloadBtn'}>
+          <Button type="primary">下载小皮球APP</Button>
+        </div>*/}
       </div>
     );
   }

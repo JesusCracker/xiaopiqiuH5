@@ -20,6 +20,10 @@ function RouterConfig({history, app}) {
     app,
     component:()=>import('./components/Protocol')
   })
+  const Privacy=dynamic({
+    app,
+    component:()=>import('./components/Privacy')
+  })
   const ForgotPage = dynamic({
     app,
     component: () => import('./routes/ForgotPage')
@@ -36,6 +40,7 @@ function RouterConfig({history, app}) {
         <Route path="/counter" exact component={CounterPage}/>
         <Route path="/register" exact component={RegisterPage}/>
         <Route path="/register/protocol" exact component={Protocol}/>
+        <Route path="/register/privacy" exact component={Privacy}/>
         <Route path="/forgot" exact component={ForgotPage}/>
         <Route path="/myscore" exact component={MyScore}/>
       </Switch>

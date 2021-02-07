@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
 import {Card, Button, Toast, Flex, NavBar, Icon} from 'antd-mobile';
 import queryString from 'query-string'
+import {connect} from "dva";
 import './MyScore.less'
 
 import 积分图片 from '../assets/h5-我的积分-图片.png';
-
+/*
+@connect(({ infoArea, loading }) => ({
+  infoArea,
+}))*/
 
 class MyScore extends React.Component {
   constructor(props) {
@@ -15,19 +19,32 @@ class MyScore extends React.Component {
     };
   }
 
+
   componentDidMount() {
-    const {location, dispatch} = this.props;
+    const {location, dispatch,history} = this.props;
     const params = queryString.parse(location.search);
     if (params && 'goldCoin' in params) {
       this.setState({
         score: params.goldCoin,
       })
     }
+    if(window.history && window.history.pushState) {
+      window.onpopstate=function () {
+        window.history.pushState('forward', null, '');
+        window.history.forward(1);
+      };
+    }
+    window.history.pushState('forward', null, '');//在IE中必须得有这两行
+    window.history.forward(1);
+  }
+
+  handleDownload() {
+    Toast.info('下载中，请稍后...', 1);
   }
 
   render() {
     const {history} = this.props;
-    const {score}=this.state;
+    const {score} = this.state;
     return (
       <div className={'container'}>
         <NavBar
@@ -47,7 +64,7 @@ class MyScore extends React.Component {
           className={'download'}
           type='primary'
           style={{borderRadius: '50px'}}
-          onClick={() => this.handleReset()}
+          onClick={() => this.handleDownload()}
         >
           下载小皮球APP
         </Button>
@@ -59,5 +76,6 @@ class MyScore extends React.Component {
 }
 
 MyScore.propTypes = {};
+
 
 export default MyScore;

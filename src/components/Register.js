@@ -5,6 +5,7 @@ import register from '../assets/register.png'
 import '../components/Register.less'
 import {routerRedux} from "dva/router";
 import queryString from "query-string";
+import {Helmet} from 'react-helmet';
 
 const AgreeItem = Checkbox.AgreeItem;
 
@@ -91,14 +92,32 @@ class Register extends PureComponent {
     const {validateFields} = form;
     validateFields(['phone'], (err, val) => {
       if (!err) {
-        // 发送短信
+        //发送短信前的判断
         dispatch({
-          type: 'login/getVerify',
+          type: 'login/isRegistered',
           payload: {
             phone: val.phone
           }
+        }).then(res => {
+          console.dir(res);
+          if (res && res.data.status === 1) {
+            if (!('data' in res.data)) {
+              // 发送短信
+              dispatch({
+                type: 'login/getVerify',
+                payload: {
+                  phone: val.phone
+                }
+              })
+              this.waitOneMinute('timer', 'time', 'loading');
+
+            } else {
+              Toast.fail('您已注册，请勿重复注册', 2);
+            }
+          }
         })
-        this.waitOneMinute('timer', 'time', 'loading');
+
+
       }
     })
   }
@@ -114,6 +133,11 @@ class Register extends PureComponent {
     history.push(`/register/protocol`)
   }
 
+  goSB = () => {
+    const {history, location} = this.props;
+    history.push(`/register/privacy`)
+  }
+
   render() {
     const {getFieldProps, getFieldError} = this.props.form;
     const {loading, time, isAgree} = this.state;
@@ -121,6 +145,11 @@ class Register extends PureComponent {
     let errors = '';
     return (
       <div className={'container2'}>
+        <Helmet>
+          <meta charSet="utf-8"/>
+          <title>马上注册抢红包-小皮球触屏版</title>
+        </Helmet>
+
         <img src={register} alt="" className={'bg-image'}/>
         <Card className={'containInner2'}>
           <InputItem
@@ -153,7 +182,7 @@ class Register extends PureComponent {
               />
               <Button
                 type='primary'
-                style={{width: '33vw', height: '38px', lineHeight: '38px', fontSize: '14px', borderRadius: '35px'}}
+                style={{width: '40%', height: '38px', lineHeight: '38px', fontSize: '14px', borderRadius: '35px'}}
                 size='small'
                 onClick={() => this.sendMessage()}
                 loading={loading}
@@ -194,15 +223,14 @@ class Register extends PureComponent {
             <Flex.Item>
               <AgreeItem data-seed="logId" onChange={e => this.setAgree(e.target.checked)}>
                 同意并接受 <a className={'protocol'} onClick={(e) => this.handleTo()}>《用户服务协议》</a>和<a className={'protocol'}
-                                                                                                 onClick={(e) => {
-                                                                                                   e.preventDefault();
-                                                                                                   alert('agree it');
-                                                                                                 }}>《隐私权政策》</a>
+                                                                                                 onClick={() => this.goSB()}>《隐私权政策》</a>
               </AgreeItem>
             </Flex.Item>
           </Flex>
-
         </Card>
+      {/*  <div className={'downloadBtn'}>
+          <Button type="primary">下载小皮球APP</Button>
+        </div>*/}
       </div>
     );
   }

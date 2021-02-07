@@ -1,7 +1,15 @@
-
+@import '~antd-mobile/dist/antd-mobile.css';
+html{
+  /*background: #ffffff;*/
+}
 html, body, :global(#root) {
   height: 100%;
 }
 body{
-  margin: 0;
+  background: #ffffff;
+  margin: 0 auto!important;
+  height:100%
+}
+a[title='站长统计']{
+  display: none;
 }

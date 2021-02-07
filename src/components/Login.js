@@ -23,6 +23,10 @@ class Login extends PureComponent {
     };
   }
 
+  UNSAFE_componentWillMount() {
+    console.log('componentWillMount');
+  }
+
   componentDidMount() {
     const {dispatch} = this.props;
     const code = getUrlParams('?code', this.props.location.search);
@@ -67,27 +71,6 @@ class Login extends PureComponent {
     }
 
   }
-
-  /*onErrorClick = () => {
-    if (this.state.hasError) {
-      Toast.info('请输入11位手机号码');
-    }
-  }
-
-  onChange = (value) => {
-    if (value.replace(/\s/g, '').length < 11) {
-      this.setState({
-        hasError: true,
-      });
-    } else {
-      this.setState({
-        hasError: false,
-      });
-    }
-    this.setState({
-      value,
-    });
-  }*/
 
   handleLogin = () => {
     const {location, history, form, dispatch} = this.props;
@@ -182,7 +165,6 @@ class Login extends PureComponent {
           >登录</Button>
         </div>
         <div className={'footer'}>
-
           <Flex>
             <Flex.Item>还没有账号？<span className={'register'} onClick={() => {
               dispatch(
@@ -205,7 +187,9 @@ class Login extends PureComponent {
             }}>忘记密码</Flex.Item>
           </Flex>
         </div>
-
+      {/*  <div className={'downloadBtn'}>
+          <Button type="primary">下载小皮球APP</Button>
+        </div>*/}
       </div>
     );
   }
