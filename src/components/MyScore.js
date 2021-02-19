@@ -5,6 +5,7 @@ import {connect} from "dva";
 import './MyScore.less'
 
 import 积分图片 from '../assets/h5-我的积分-图片.png';
+
 /*
 @connect(({ infoArea, loading }) => ({
   infoArea,
@@ -21,15 +22,15 @@ class MyScore extends React.Component {
 
 
   componentDidMount() {
-    const {location, dispatch,history} = this.props;
+    const {location, dispatch, history} = this.props;
     const params = queryString.parse(location.search);
     if (params && 'goldCoin' in params) {
       this.setState({
         score: params.goldCoin,
       })
     }
-    if(window.history && window.history.pushState) {
-      window.onpopstate=function () {
+    if (window.history && window.history.pushState) {
+      window.onpopstate = function () {
         window.history.pushState('forward', null, '');
         window.history.forward(1);
       };
@@ -40,6 +41,9 @@ class MyScore extends React.Component {
 
   handleDownload() {
     Toast.info('下载中，请稍后...', 1);
+  }
+
+  handleOpen() {
   }
 
   render() {
@@ -60,6 +64,14 @@ class MyScore extends React.Component {
           <img src={积分图片} alt=""/>
           <div className={'more'}>领更多积分，请登录小皮球APP</div>
         </div>
+        <Button
+          className={'openAPP'}
+          type='primary'
+          style={{borderRadius: '50px'}}
+          onClick={() => this.handleOpen()}
+        >
+          打开小皮球APP
+        </Button>
         <Button
           className={'download'}
           type='primary'
