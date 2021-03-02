@@ -4,6 +4,7 @@ import {createForm} from 'rc-form';
 import './Forget.less'
 import {routerRedux} from "dva/router";
 import {Helmet} from 'react-helmet';
+import HookFooter from "./SB";
 
 import queryString from "query-string";
 
@@ -195,6 +196,7 @@ class Forgot extends React.Component {
        {/* <div className={'downloadBtn'}>
           <Button type="primary">下载小皮球APP</Button>
         </div>*/}
+          <HookFooter/>
       </div>
     );
   }

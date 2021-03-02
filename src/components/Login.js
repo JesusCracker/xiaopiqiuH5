@@ -2,9 +2,9 @@ import React, {PureComponent} from 'react';
 import {InputItem, Toast, Button, Flex} from 'antd-mobile';
 import {routerRedux} from 'dva/router';
 import {createForm} from 'rc-form';
-import {connect} from 'dva'
 import {getUrlParams} from "../utils/common";
 import queryString from 'query-string'
+import HookFooter from "./SB";
 
 import './Login.less'
 
@@ -17,6 +17,7 @@ class Login extends PureComponent {
   constructor(props) {
     super(props);
 
+
     this.state = {
       hasError: false,
       value: '',
@@ -24,11 +25,11 @@ class Login extends PureComponent {
   }
 
   UNSAFE_componentWillMount() {
-    console.log('componentWillMount');
+    // console.log('componentWillMount');
   }
 
   componentDidMount() {
-    const {dispatch} = this.props;
+/*    const {dispatch} = this.props;
     const code = getUrlParams('?code', this.props.location.search);
     if (!code) {
       // Toast.fail('获取code失败');
@@ -40,6 +41,10 @@ class Login extends PureComponent {
         payload: code
       }).then(res => {
         if (res && res.data.status === 1) {
+            dispatch({
+                type: 'login/save',
+                payload: {'requested':true},
+            })
           const result = res.data.data;
           // Toast.success(JSON.stringify(result), 30, null, false);
           if (result && "phone" in result && result.openId) {
@@ -68,7 +73,7 @@ class Login extends PureComponent {
         }
       })
 
-    }
+    }*/
 
   }
 
@@ -187,10 +192,15 @@ class Login extends PureComponent {
             }}>忘记密码</Flex.Item>
           </Flex>
         </div>
+
+          <HookFooter/>
+
       {/*  <div className={'downloadBtn'}>
           <Button type="primary">下载小皮球APP</Button>
         </div>*/}
+          {/*<div className={'inn'}>小皮球Copyright © 2020-2021 <div className={'line'}>四川小皮球科技有限公司 | 蜀ICP备20021491号</div></div>*/}
       </div>
+
     );
   }
 }

@@ -49,3 +49,14 @@ export async function wxForgot(params) {
     body: {...params},
   });
 }
+
+//下载列表
+export async function queryAppList(params) {
+    return request(`/api/appVersion/list`, {
+        method: 'POST',
+        body: {
+            ...params,
+        },
+    });
+}
+

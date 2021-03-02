@@ -1,0 +1,1 @@
+export const filePath = 'http://www.xiaopiqiu.net/file_upload/';

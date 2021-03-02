@@ -6,6 +6,7 @@ import '../components/Register.less'
 import {routerRedux} from "dva/router";
 import queryString from "query-string";
 import {Helmet} from 'react-helmet';
+import HookFooter from "./SB";
 
 const AgreeItem = Checkbox.AgreeItem;
 
@@ -16,7 +17,7 @@ class Register extends PureComponent {
     this.state = {
       time: 59,
       loading: false,
-      isAgree: false,
+      isAgree: true,
     };
 
   }
@@ -221,16 +222,18 @@ class Register extends PureComponent {
 
           <Flex className={'agree'}>
             <Flex.Item>
-              <AgreeItem data-seed="logId" onChange={e => this.setAgree(e.target.checked)}>
+              <AgreeItem  checked={isAgree} data-seed="logId" onChange={e => this.setAgree(e.target.checked)}>
                 同意并接受 <a className={'protocol'} onClick={(e) => this.handleTo()}>《用户服务协议》</a>和<a className={'protocol'}
                                                                                                  onClick={() => this.goSB()}>《隐私权政策》</a>
               </AgreeItem>
             </Flex.Item>
           </Flex>
+            <HookFooter/>
         </Card>
       {/*  <div className={'downloadBtn'}>
           <Button type="primary">下载小皮球APP</Button>
         </div>*/}
+
       </div>
     );
   }
