@@ -1,1 +1,1 @@
-export const filePath = 'http://www.xiaopiqiu.net/file_upload/';
+export const filePath = 'http://file.xiaopiqiu.net/';
