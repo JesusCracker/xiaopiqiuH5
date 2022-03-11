@@ -19,6 +19,8 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
     "babel-plugin-dva-hmr": "^0.3.2",
     "eslint": "^4.14.0",
     "eslint-config-umi": "^0.1.1",
@@ -28,6 +30,7 @@
     "eslint-plugin-react": "^7.1.0",
     "husky": "^0.12.0",
     "redbox-react": "^1.4.3",
-    "roadhog": "^2.5.0-beta.4"
+    "roadhog": "^2.5.0-beta.4",
+    "semantic-release": "^19.0.2"
   }
 }
